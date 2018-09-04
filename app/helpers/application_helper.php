@@ -2,6 +2,21 @@
 
 class ApplicationHelper {
 
+    public static function getLocale() {
+
+        if (isset($_GET['locale'])) {
+
+            $locale = $_GET['locale'];
+
+            switch($locale) {
+                case preg_match("/^pt_BR/", $locale) ? true : false :
+                    Locale::SetDefault("pt_BR.utf-8");
+                    $_SESSION['locale'] = "pt_BR.utf-8";
+                    break;
+            }
+        }
+    }
+
     public static function setLocale() {
 
         if (isset($_SESSION['locale'])) {

@@ -12,7 +12,10 @@ class Router {
             ]
         ],
         'POST' => [
-
+            '/calculate' => [
+                'controller' => 'welcome',
+                'action' => 'calculate'
+            ]
         ]
     ];
 
