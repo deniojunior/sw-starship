@@ -1,0 +1,12 @@
+**.mo
+**.swp
+logs/
+tmp/
+
+html/coverage
+vendor/
+
+.vagrant/
+.idea/
+
+node_modules/
