@@ -1,0 +1,10 @@
+**.mo
+**.swp
+logs/
+tmp/
+
+html/coverage
+vendor/
+
+.vagrant/
+.idea/
