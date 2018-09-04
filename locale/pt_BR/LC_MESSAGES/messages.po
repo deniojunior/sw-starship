@@ -14,3 +14,9 @@ msgid   "AppDescription"
 msgstr  "Olá! A função deste sistema é calcular quantas paradas para "
         "reabastecimento de suprimentos cada nave espacial da saga Star Wars teria que fazer "
         "para percorrer determinada distância. Insira a distância abaixo em Mega Lights (MGLT) e se surprenda!"
+
+msgid   "ErroDesconhecido"
+msgstr  "Erro desconhecido"
+
+msgid   "Success"
+msgstr  "Sucesso"

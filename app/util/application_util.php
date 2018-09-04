@@ -1,6 +1,6 @@
 <?php
 
-class ApplicationHelper {
+class ApplicationUtil {
 
     public static function getLocale() {
 
@@ -37,4 +37,5 @@ class ApplicationHelper {
         bind_textdomain_codeset('messages', 'UTF-8');
         textdomain("messages");
     }
+
 }

@@ -38,16 +38,36 @@ $(document).ready(function() {
                 type: 'POST',
                 enctype: 'application/json',
                 success: function (data) {
-                    swal({
-                        title: 'O cálculo terminou!',
-                        type: 'success',
-                        confirmButtonText: 'Ver resultado',
-                        allowOutsideClick: false,
-                    }).then(() => {
-                        /*$('#upload-container').hide();
-                        $('#video-container video').attr('src', fileUrl);
-                        $('#video-container').show();*/
-                    });
+                    if(data != "error") {
+
+                        data = JSON.parse(data);
+
+                        var result = "";
+                        for (var i = 0; i < data.length; i++) {
+                            if (data[i].resupplyStops) {
+                                result += data[i].name + ": " + data[i].resupplyStops + "<br/>";
+                            }
+                        }
+
+                        result += "<br/><i style='font-size: 11px'>*As demais naves não possuem as informações necessárias para o cálculo</i>";
+
+                        swal({
+                            type: 'success',
+                            html: result,
+                            confirmButtonText: 'Fechar',
+                            allowOutsideClick: false
+                        })
+                    }else{
+                        swal({
+                            title: 'Aconteceu um erro inesperado!',
+                            type: 'error',
+                            confirmButtonText: 'Tentar novamente',
+                            allowOutsideClick: false,
+                            onOpen: () => {
+                                swal.hideLoading()
+                            },
+                        });
+                    }
                 },
                 error: function (XMLHttpRequest) {
                     swal({
@@ -58,9 +78,6 @@ $(document).ready(function() {
                         onOpen: () => {
                             swal.hideLoading()
                         },
-                        onClose: () => {
-                            document.getElementById("convert-file-form").reset();
-                        }
                     });
                 }
 

@@ -309,6 +309,11 @@ body .sw-starship {
     text-align: center;
 }
 
+#distance {
+    text-align: center;
+    margin-left: -10px;
+}
+
 .app-description{
     color: #d6d2d2;
 }

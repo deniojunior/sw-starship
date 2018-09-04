@@ -1,6 +1,6 @@
 <?php
 
-require_once 'helpers/application_helper.php';
+require_once 'util/application_util.php';
 
 class Router {
 
@@ -9,7 +9,7 @@ class Router {
             '/' => [
                 'controller' => 'welcome',
                 'action' => 'index'
-            ]
+            ],
         ],
         'POST' => [
             '/calculate' => [
@@ -20,7 +20,7 @@ class Router {
     ];
 
     public static function start() {
-        ApplicationHelper::setLocale();
+        ApplicationUtil::setLocale();
 
         $method = $_SERVER["REQUEST_METHOD"];
 
