@@ -14173,9 +14173,9 @@ function validateInput(input) {
     return true;
 }
 
-function renderResult(data) {
+function renderResult(response) {
 
-    if (data === "error") {
+    if (response.error) {
 
         swal({
             title: 'Aconteceu um erro inesperado!',
@@ -14190,12 +14190,10 @@ function renderResult(data) {
         return false;
     }
 
-    data = JSON.parse(data);
-
     var result = "";
-    for (var i = 0; i < data.length; i++) {
-        if (data[i].resupplyStops) {
-            result += data[i].name + ": " + data[i].resupplyStops + "<br/>";
+    for (var i = 0; i < response.data.length; i++) {
+        if (response.data[i].resupplyStops) {
+            result += response.data[i].name + ": " + response.data[i].resupplyStops + "<br/>";
         }
     }
 
@@ -14210,6 +14208,12 @@ function renderResult(data) {
 }
 
 $(document).ready(function () {
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
 
     $('#calculate-form').submit(function (event) {
 
@@ -14229,7 +14233,7 @@ $(document).ready(function () {
             data.append('distance', distance);
 
             $.ajax({
-                url: '/calculate',
+                url: '/api/calculate',
                 data: data,
                 cache: false,
                 contentType: false,
@@ -14237,13 +14241,14 @@ $(document).ready(function () {
                 method: 'POST',
                 type: 'POST',
                 enctype: 'application/json',
-                success: function success(data) {
-                    renderResult(data);
+                success: function success(response) {
+                    renderResult(response);
                 },
                 error: function error(XMLHttpRequest) {
                     swal({
                         title: 'Aconteceu um erro inesperado!',
                         type: 'error',
+                        text: 'Error: ' + JSON.stringify(XMLHttpRequest),
                         confirmButtonText: 'Tentar novamente',
                         allowOutsideClick: false,
                         onOpen: function onOpen() {
