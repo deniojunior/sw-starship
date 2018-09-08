@@ -17,7 +17,7 @@ fi
 su - vagrant -c "mkdir -p $VIRTUAL_HOST_ROOT"
 su - vagrant -c "mkdir -p $VIRTUAL_HOST_ROOT/logs"
 
-su - vagrant -c "ln -s $APP_ROOT/html $VIRTUAL_HOST_ROOT/html"
+su - vagrant -c "ln -s $APP_ROOT/public $VIRTUAL_HOST_ROOT/public"
 
 su - vagrant -c "ln -s $VIRTUAL_HOST_ROOT $DOMAIN_NAME"
 

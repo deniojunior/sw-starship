@@ -13,11 +13,11 @@ dnf install -y \
   unzip \
   httpd \
   libffi-devel \
-  php \
-  php-intl \
-  php-mbstring \
-  php-mysqlnd \
-  php-pdo \
-  php-pecl-xdebug \
-  php-pecl-zip \
-  php-xml \
+  php71 \
+  php71-mbstring \
+  php71-intl \
+  php71-mysqlnd \
+  php71-pdo \
+  php71-pecl-xdebug \
+  php71-pecl-zip \
+  php71-xml \

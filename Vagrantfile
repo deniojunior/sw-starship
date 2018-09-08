@@ -37,7 +37,6 @@ Vagrant.configure('2') do |config|
     sw.vm.provision :shell, path: '.development/bin/setup-virtual-host.sh', env: {'APP_NAME' => 'swstarship'}
 
     sw.vm.provision :shell, path: '.development/bin/run-composer.sh', privileged: false
-    sw.vm.provision :shell, path: '.development/bin/compile-messages.sh', privileged: false
 
     sw.vm.provision :shell, inline: 'systemctl enable httpd && systemctl start httpd'
   end
